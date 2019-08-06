@@ -1,24 +1,12 @@
-# README
+# Share Review
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository provides web application for bulletin board of academic papers.
 
-Things you may want to cover:
+## How to build 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bundle install
+rails db:create
+rails db:migrate
+rails s
+```
