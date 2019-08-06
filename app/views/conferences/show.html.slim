@@ -1,0 +1,15 @@
+.pb-2.mt-4.mb-2.border-bottom
+  .float-right
+    = link_to 'Add Thesis', new_conference_thesis_path(@conference), class: 'btn btn-primary'
+  h1 = @conference.name
+
+p = @conference.description
+
+.list-group
+  - @conference.theses.each do |thesis|
+    .list-group-item
+      = link_to conference_thesis_path(@conference, thesis) do
+        h5.mb1 = thesis.title
+      p.mb1 = thesis.abstract
+      -if thesis.url
+        =link_to thesis.url, thesis.url, target: :_blank

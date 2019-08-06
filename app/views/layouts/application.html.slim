@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title ShareReview
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    header.navbar.navbar-expand-lg.navbar-light.bg-light roll='navigation'
+      .container
+        .navbar-header
+          = link_to 'Share Review', root_path, class: 'navbar-brand'
+          button.navbar-toggler.ml-auto type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-label="Toggle navigation"
+            span.navbar-toggler-icon
+
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          ul.nav.navbar-nav.ml-auto
+            - if logged_in?
+              li.nav-item
+                = link_to 'Add Conference', new_conference_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'Logout', logout_path, class: 'nav-link'
+            - else
+              li.nav-item
+                = link_to 'Signup', new_user_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'Login', login_path, class: 'nav-link'
+    .container
+      -if flash[:notice]
+        .alert.alert-success
+          = flash[:notice]
+      -if flash[:alert]
+        .alert.alert-danger
+          = flash[:alert]
+      = yield

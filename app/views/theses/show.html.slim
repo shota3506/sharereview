@@ -1,0 +1,25 @@
+.pb-2.mt-4.mb-2.border-bottom
+  .float-right
+  h1 = @thesis.title
+
+p = @thesis.abstract
+-if @thesis.url
+  =link_to @thesis.url, @thesis.url, target: :_blank
+
+.my-4
+  = form_for @comment, url: conference_thesis_comments_path(@thesis.conference, @thesis), role: 'form' do |f|
+    - if @comment.errors.any?
+      .alert.alert-danger
+        ul
+        - @comment.errors.full_messages.each do |msg|
+          li = msg
+    .form-group
+      = f.text_area :text, class: 'form-control'
+
+    = f.submit 'Add Comment', class: 'btn btn-primary'
+
+.list-group
+  - @thesis.comments.each do |comment|
+    .list-group-item
+      h5.mb1 = comment.user.name
+      p.mb1 = comment.text

@@ -1,0 +1,18 @@
+.pb-2.mt-4.mb-2.border-bottom
+  h1 Add Conference
+
+= form_for @conference, role: 'form' do |f|
+  - if @conference.errors.any?
+    .alert.alert-danger
+      ul
+      - @conference.errors.full_messages.each do |msg|
+        li = msg
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: 'form-control'
+
+  = f.submit 'Add', class: 'btn btn-primary'

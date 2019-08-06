@@ -1,0 +1,9 @@
+.pb-2.mt-4.mb-2.border-bottom
+  h1 Conferences
+
+.list-group
+  - @conferences.each do |conference|
+    .list-group-item
+      = link_to conference do
+        h5.mb1 = conference.name
+      p.mb1 = conference.description
